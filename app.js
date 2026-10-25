@@ -267,7 +267,7 @@ function loop(t){
 
 }
 wmeasure();wrender();
-addEventListener('resize',()=>{wmeasure()});
+addEventListener('resize',()=>{wmeasure();resize()});
 loop(performance.now());
 
 if(red)hide();
