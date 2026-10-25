@@ -1,7 +1,7 @@
-/* Ashgrove cinematic glide: a hands-free tour of the real page.
+/* Ember cinematic glide: a hands-free tour of the real page.
    Never autostarts. G or 1-4 to start, Space pauses, any user input takes over.
    ?duration=20  ?loop  ?clean  (?pill shows a tiny status dot)
-   window.AshgroveGlide.start(seconds) */
+   window.EmberGlide.start(seconds) */
 (()=>{
 'use strict';
 const q=new URLSearchParams(location.search);
@@ -19,7 +19,7 @@ const vh=()=>innerHeight;
 const heroEl=()=>$('#hero');
 const heroTop=()=>heroEl().getBoundingClientRect().top+scrollY;
 const heroTot=()=>heroEl().offsetHeight-vh();
-const cfg=()=>window.AshgroveConfig||{STARTS:[0,.15,.25,.34,.46,.62,.77,.88]};
+const cfg=()=>window.EmberConfig||{STARTS:[0,.15,.25,.34,.46,.62,.77,.88]};
 const focusY=el=>()=>{const r=el.getBoundingClientRect(),y=r.top+scrollY;return Math.max(0,r.height>vh()?y-70:y-(vh()-r.height)/2)};
 const maxY=()=>document.documentElement.scrollHeight-vh();
 
@@ -38,11 +38,13 @@ function buildSteps(){
   const wheel=$('#wheel');
   scroll(focusY($('#menu')));
   dwell(1300);act(()=>$('#wnext').click());dwell(1500);act(()=>$('#wnext').click());dwell(1100);
-  // roast dial
-  const rd=$('#rd');
-  const setR=v=>()=>{rd.value=v;rd.dispatchEvent(new Event('input',{bubbles:true}))};
-  scroll(focusY($('#roast')));
-  dwell(700);act(setR(2));dwell(1500);act(setR(0));dwell(1400);act(setR(1));dwell(800);
+  // order builder: pick drinks, add a croissant, place the order
+  const pick=(name,val)=>()=>{const i=$(`input[name=${name}][value="${val}"]`);if(!i||i.disabled)return;if(i.type==='checkbox'&&i.checked)return;i.click()};
+  scroll(focusY($('#order')));
+  act(()=>{const b=$('#bgo');if(b&&b.textContent==='Build another')b.click()});
+  dwell(700);act(pick('drink','cold'));dwell(900);act(pick('milk','oat'));act(pick('size','l'));dwell(700);
+  act(pick('drink','latte'));dwell(500);act(pick('extra','croissant'));dwell(1000);
+  act(()=>$('#bgo').click());dwell(1200);
   // reviews
   scroll(focusY($('#reviews')));
   dwell(1700);act(()=>$('#rnext').click());dwell(1700);
@@ -139,7 +141,7 @@ addEventListener('keydown',e=>{
 },true);
 ['wheel','touchstart','pointerdown'].forEach(t=>addEventListener(t,e=>{if(run&&e.isTrusted)stop()},{capture:true,passive:true}));
 
-window.AshgroveGlide={
+window.EmberGlide={
   start:s=>start(s),stop:()=>stop(),pause,resume,
   estimate:()=>{const s=buildSteps();return dryRun(s)/1000},
   get running(){return !!run}

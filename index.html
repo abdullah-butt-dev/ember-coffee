@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Ashgrove Coffee Roasters — Slow-roasted, hand-poured</title>
-<meta name="description" content="Ashgrove is a small-batch coffee roastery and café on Cooper's Row. Slow-roasted beans, hand-poured Ember No. 7 lattes, and a bar you can watch the roaster from.">
+<title>Ember Coffee Roasters — Slow-roasted, hand-poured</title>
+<meta name="description" content="Ember is a small-batch coffee roastery and café on Cooper's Row. Slow-roasted beans, hand-poured No. 7 lattes, and a bar you can watch the roaster from.">
 <meta name="theme-color" content="#120c08">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +20,7 @@
 <div class="ld" id="ld" aria-hidden="true">
   <div class="ld-in">
     <svg class="ld-bean" viewBox="0 0 40 40" width="44" height="44"><ellipse cx="20" cy="20" rx="11" ry="16" transform="rotate(35 20 20)" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 29C18 23 22 17 28 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    <span class="ld-name">Ashgrove</span>
-    <small>Roasting frames <span id="pc">0</span> %</small>
+    <span class="ld-name">Ember</span>
     <i class="ld-bar"><b id="pb"></b></i>
   </div>
 </div>
@@ -29,22 +28,22 @@
 <div class="sb" aria-hidden="true"><i id="sbf"></i></div>
 
 <header class="nav" id="nav">
-  <a class="logo" href="#top" aria-label="Ashgrove Coffee Roasters, back to top">
+  <a class="logo" href="#top" aria-label="Ember Coffee Roasters, back to top">
     <svg viewBox="0 0 40 40" width="22" height="22" aria-hidden="true"><ellipse cx="20" cy="20" rx="11" ry="16" transform="rotate(35 20 20)" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M12 29C18 23 22 17 28 11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
-    Ashgrove
+    Ember
   </a>
   <nav class="links" aria-label="Primary">
-    <a href="#menu">Menu</a><a href="#roast">Roast dial</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a>
+    <a href="#menu">Menu</a><a href="#order">Order</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a>
   </nav>
   <div class="nav-r">
-    <a class="pill" href="#menu" data-mag>Order ahead</a>
+    <a class="pill" href="#order" data-mag>Order ahead</a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span></button>
   </div>
 </header>
 
 <div class="sheet" id="sheet" aria-hidden="true">
   <nav aria-label="Mobile">
-    <a href="#menu">Menu</a><a href="#roast">Roast dial</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a>
+    <a href="#menu">Menu</a><a href="#order">Order</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a>
   </nav>
   <p>14 Cooper's Row · Open from 6:30 am</p>
 </div>
@@ -52,7 +51,7 @@
 <main id="top">
 
 <!-- HERO -->
-<section class="hero" id="hero" aria-label="Ashgrove: from bean to cup">
+<section class="hero" id="hero" aria-label="Ember: from bean to cup">
   <div class="stage">
     <picture>
       <source media="(max-width:767px)" srcset="frames/m/frame-001.webp">
@@ -60,16 +59,15 @@
     </picture>
     <canvas id="cv" aria-hidden="true"></canvas>
 
-    <div class="cap f on" data-l="Ashgrove"><h1>Ashgrove</h1><p>Slow-roasted coffee, poured by hand.</p></div>
-    <div class="cap" data-l="Grind" aria-hidden="true" inert><h2>Grind<em>.</em></h2><p>Ground to order, seconds from the cup.</p></div>
-    <div class="cap" data-l="Tamp" aria-hidden="true" inert><h2>Tamp<em>.</em></h2><p>Thirty pounds of patience.</p></div>
-    <div class="cap" data-l="Lock" aria-hidden="true" inert><h2>Lock<em>.</em></h2><p>A quarter turn and a held breath.</p></div>
-    <div class="cap" data-l="Extract" aria-hidden="true" inert><h2>Extract<em>.</em></h2><p>Twenty-eight seconds to honey-dark crema.</p></div>
-    <div class="cap" data-l="Steam" aria-hidden="true" inert><h2>Steam<em>.</em></h2><p>Milk stretched to silk at 62°C.</p></div>
-    <div class="cap" data-l="Pour" aria-hidden="true" inert><h2>Pour<em>.</em></h2><p>A rosetta, drawn in a single breath.</p></div>
-    <div class="cap" data-l="Sip" aria-hidden="true" inert><h2>Sip<em>.</em></h2><p>Ember No. 7, waiting on Cooper's Row.</p><a class="btn" href="#visit">Find your seat</a></div>
+        <div class="cap on" data-p="mr" data-m="mr"><h1>Ember</h1><p>Slow-roasted coffee, poured by hand.</p></div>
+    <div class="cap" data-p="bl" data-m="br" aria-hidden="true" inert><h2>Grind<em>.</em></h2><p>Ground to order, seconds from the cup.</p></div>
+    <div class="cap" data-p="tr" data-m="tl" aria-hidden="true" inert><h2>Tamp<em>.</em></h2><p>Thirty pounds of patience.</p></div>
+    <div class="cap" data-p="br" data-m="br" aria-hidden="true" inert><h2>Lock<em>.</em></h2><p>A quarter turn and a held breath.</p></div>
+    <div class="cap" data-p="br" data-m="tr" aria-hidden="true" inert><h2>Extract<em>.</em></h2><p>Twenty-eight seconds to honey-dark crema.</p></div>
+    <div class="cap" data-p="tl" data-m="bl" aria-hidden="true" inert><h2>Steam<em>.</em></h2><p>Milk stretched to silk at 62°C.</p></div>
+    <div class="cap" data-p="bl" data-m="br" aria-hidden="true" inert><h2>Pour<em>.</em></h2><p>A rosetta, drawn in a single breath.</p></div>
+    <div class="cap" data-p="mr" data-m="bl" aria-hidden="true" inert><h2>Sip<em>.</em></h2><p>No. 7, waiting for you on Cooper's Row.</p><a class="btn" href="#visit">Find your seat</a></div>
 
-    <div class="ct" aria-hidden="true"><b id="cn">01</b> / 08<span id="cl">Ashgrove</span></div>
     <ul class="rail" aria-hidden="true"><li class="on"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
   </div>
 </section>
@@ -97,7 +95,7 @@
   <div class="wmeta rv">
     <button class="rnd" id="wprev" aria-label="Previous item"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="winfo" id="winfo" aria-live="polite">
-      <h3 id="wt">Ember No. 7</h3>
+      <h3 id="wt">No. 7 Latte</h3>
       <p id="wd">Cocoa nib, burnt honey and silk milk.</p>
       <b id="wp">$5.80</b>
     </div>
@@ -105,59 +103,84 @@
   </div>
 </section>
 
-<!-- ROAST DIAL -->
-<section class="sec roast" id="roast" data-v="roast" aria-labelledby="roast-h">
+<!-- ORDER BUILDER -->
+<section class="sec order" id="order" aria-labelledby="order-h">
   <div class="head rv">
-    <p class="eyebrow">02 — The roast dial</p>
-    <h2 id="roast-h">Turn the dial. <em>Taste</em> the fire.</h2>
-    <p class="lede">Same farm, three roasts. Slide through them and watch the cup change.</p>
+    <p class="eyebrow">02 — Order ahead</p>
+    <h2 id="order-h">Build your cup. <em>Skip the line.</em></h2>
+    <p class="lede">Pick it, tweak it, and it is waiting on the bar when you walk in.</p>
   </div>
 
-  <div class="studio rv">
-    <figure class="shot">
-      <picture>
-        <source media="(min-width:768px) and (max-width:1023px)" srcset="images/promo-banner.webp">
-        <img src="images/promo-banner-mobile.webp" alt="A flaky croissant on a stoneware plate beside a steaming rosetta latte on a rustic wooden counter" width="825" height="1024" loading="lazy">
-      </picture>
-      <div class="tint" id="tint"></div>
-    </figure>
-
-    <div class="panel">
-      <div class="gauge" aria-hidden="true">
-        <svg viewBox="0 0 220 130" width="100%">
-          <path d="M20 115A90 90 0 0 1 200 115" fill="none" stroke="rgba(234,215,184,.16)" stroke-width="10" stroke-linecap="round"/>
-          <path d="M20 115A90 90 0 0 1 200 115" fill="none" stroke="url(#gg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="283" id="garc" stroke-dashoffset="283"/>
-          <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#e9c48a"/><stop offset=".55" stop-color="#e0652a"/><stop offset="1" stop-color="#6b2c14"/></linearGradient></defs>
-          <g id="needle" style="transform-origin:110px 115px"><line x1="110" y1="115" x2="110" y2="40" stroke="#ead7b8" stroke-width="3" stroke-linecap="round"/></g>
-          <circle cx="110" cy="115" r="7" fill="#ead7b8"/>
-        </svg>
-        <div class="temp"><b id="temp">208</b><span>°C drop temp</span></div>
+  <form class="builder rv" id="bform" novalidate>
+    <div class="bshow">
+      <div class="bimgs" id="bimgs">
+        <img data-drink="latte" class="on" src="images/card-ember.webp" alt="A latte finished with a rosetta pour" width="1000" height="1250">
+        <img data-drink="cortado" src="images/card-cortado.webp" alt="A glass of cortado on a copper-rimmed saucer" width="825" height="1024" loading="lazy">
+        <img data-drink="cold" src="images/card-coldbrew.webp" alt="A tall glass of cold brew over ice with swirling cream" width="825" height="1024" loading="lazy">
+        <img data-drink="pour" src="images/card-pourover.webp" alt="A pour-over dripper on a glass carafe" width="825" height="1024" loading="lazy">
+        <img data-drink="affo" src="images/card-affogato.webp" alt="Vanilla gelato with hot espresso poured over it" width="825" height="1024" loading="lazy">
+        <i class="plus" id="plus" aria-hidden="true"></i>
       </div>
-
-      <div class="dialctl">
-        <div class="rlabels">
-          <button type="button" class="rl" data-v="0">Light</button>
-          <button type="button" class="rl on" data-v="1">Medium</button>
-          <button type="button" class="rl" data-v="2">Dark</button>
-        </div>
-        <input type="range" id="rd" min="0" max="2" step="1" value="1" aria-label="Roast level: light, medium or dark">
-      </div>
-
-      <div class="rnotes" id="rnotes" aria-live="polite">
-        <h3 id="rn">Ember <i>· medium</i></h3>
-        <p id="rt">Cocoa nib, burnt honey, toasted hazelnut.</p>
-        <p class="pair">Pairs with <b id="rp">a butter croissant</b> · roast time <b id="rtm">9m 50s</b></p>
-      </div>
-
-      <dl class="meters">
-        <div><dt>Brightness</dt><dd><i id="m0"></i></dd></div>
-        <div><dt>Body</dt><dd><i id="m1"></i></dd></div>
-        <div><dt>Sweetness</dt><dd><i id="m2"></i></dd></div>
-      </dl>
-
-      <p class="ritual"><b>Morning Ritual</b> Any latte and pastry, 40% off until 10 am, Monday to Friday.</p>
+      <div class="bname"><h3 id="bn">No. 7 Latte</h3><span id="bpr">from $5.80</span></div>
+      <p class="bdesc" id="bd">Cocoa nib, burnt honey and silk milk. Our signature.</p>
     </div>
-  </div>
+
+    <div class="bpanel">
+      <fieldset>
+        <legend>1 · Drink</legend>
+        <div class="drinks">
+          <label class="dr"><input type="radio" name="drink" value="latte" checked><span><img src="images/card-ember.webp" alt="" width="64" height="64">No. 7 Latte</span></label>
+          <label class="dr"><input type="radio" name="drink" value="cortado"><span><img src="images/card-cortado.webp" alt="" width="64" height="64">Cortado</span></label>
+          <label class="dr"><input type="radio" name="drink" value="cold"><span><img src="images/card-coldbrew.webp" alt="" width="64" height="64">Cold brew</span></label>
+          <label class="dr"><input type="radio" name="drink" value="pour"><span><img src="images/card-pourover.webp" alt="" width="64" height="64">Pour-over</span></label>
+          <label class="dr"><input type="radio" name="drink" value="affo"><span><img src="images/card-affogato.webp" alt="" width="64" height="64">Affogato</span></label>
+        </div>
+      </fieldset>
+
+      <div class="two">
+        <fieldset>
+          <legend>2 · Size</legend>
+          <div class="opts three">
+            <label class="opt"><input type="radio" name="size" value="s"><span>Small</span></label>
+            <label class="opt"><input type="radio" name="size" value="m" checked><span>Medium</span></label>
+            <label class="opt"><input type="radio" name="size" value="l"><span>Large</span></label>
+          </div>
+        </fieldset>
+        <fieldset id="milkset">
+          <legend>3 · Milk</legend>
+          <div class="opts three">
+            <label class="opt"><input type="radio" name="milk" value="whole" checked><span>Whole</span></label>
+            <label class="opt"><input type="radio" name="milk" value="oat"><span>Oat</span></label>
+            <label class="opt"><input type="radio" name="milk" value="almond"><span>Almond</span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <fieldset>
+        <legend>4 · Add something</legend>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="extra" value="shot"><span>Extra shot <small>+$0.90</small></span></label>
+          <label class="opt"><input type="checkbox" name="extra" value="vanilla"><span>Vanilla <small>+$0.60</small></span></label>
+          <label class="opt"><input type="checkbox" name="extra" value="croissant"><span><i class="cthumb" aria-hidden="true"></i>Butter croissant <small>+$3.50</small></span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>5 · Pickup</legend>
+        <div class="opts three">
+          <label class="opt"><input type="radio" name="pickup" value="10" checked><span>In 10 min</span></label>
+          <label class="opt"><input type="radio" name="pickup" value="20"><span>In 20 min</span></label>
+          <label class="opt"><input type="radio" name="pickup" value="30"><span>In 30 min</span></label>
+        </div>
+      </fieldset>
+
+      <div class="bbar" id="bbar">
+        <p class="bsum" id="bsum" aria-live="polite">Medium No. 7 Latte, whole milk</p>
+        <b class="btot" id="btot">$6.40</b>
+        <button class="btn" type="submit" id="bgo">Place pickup order</button>
+      </div>
+    </div>
+  </form>
 </section>
 
 <!-- REVIEWS -->
@@ -171,7 +194,7 @@
   <div class="rcar rv" id="rcar" role="region" aria-roledescription="carousel" aria-label="Customer reviews">
     <div class="slides" id="slides">
       <figure class="slide on">
-        <blockquote><p>I came for the croissant and stayed for the Ember No. 7. It tastes like toasted honey and the foam is genuinely silky, the kind you stop talking to enjoy.</p></blockquote>
+        <blockquote><p>I came for the croissant and stayed for the No. 7 latte. It tastes like toasted honey and the foam is genuinely silky, the kind you stop talking to enjoy.</p></blockquote>
         <figcaption><span class="av" aria-hidden="true">MK</span><b>Maya K.</b><span>Pastry chef, Park Slope</span></figcaption>
       </figure>
       <figure class="slide">
@@ -202,7 +225,7 @@
 
 <!-- VISIT -->
 <section class="sec visit" id="visit" data-v="visit" aria-labelledby="visit-h">
-  <img class="vbg" src="images/visit-interior.webp" alt="The Ashgrove café interior at golden hour with a long wooden bar, espresso machine and pendant lamps" width="825" height="1024" loading="lazy">
+  <img class="vbg" src="images/visit-interior.webp" alt="The Ember café interior at golden hour with a long wooden bar, espresso machine and pendant lamps" width="825" height="1024" loading="lazy">
   <div class="vwrap">
     <div class="head rv">
       <p class="eyebrow">04 — Visit us</p>
@@ -217,32 +240,250 @@
     <div class="vgrid rv" id="vgrid" data-tab="map">
       <div class="mapcard" id="p-map" role="tabpanel" aria-labelledby="tab-map">
         <div class="map" id="map">
-          <svg viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <rect width="800" height="560" fill="#1a110b"/>
-            <path d="M-20 430C120 380 200 470 340 440S560 330 640 380 780 470 830 430V580H-20Z" fill="#17222a" opacity=".9"/>
-            <path d="M-20 430C120 380 200 470 340 440S560 330 640 380 780 470 830 430" fill="none" stroke="#4d7a86" stroke-opacity=".5" stroke-width="2"/>
-            <path d="M520 360l90-40 110 20 40 70-60 50-140-10z" fill="#24331f" opacity=".95"/>
-            <g stroke="#c98a4b" stroke-opacity=".28" stroke-width="2" fill="none">
-              <path d="M0 150H800M0 260H800M0 370H620M120 0V440M300 0V430M470 0V360M650 0V330"/>
-              <path d="M0 80L800 220" stroke-opacity=".16"/>
-              <path d="M200 0L360 560" stroke-opacity=".16"/>
-            </g>
-            <g fill="#2a1b12">
-              <rect x="136" y="166" width="150" height="80" rx="8"/><rect x="316" y="166" width="140" height="80" rx="8"/><rect x="486" y="166" width="150" height="80" rx="8"/>
-              <rect x="136" y="276" width="150" height="80" rx="8"/><rect x="316" y="276" width="140" height="80" rx="8"/><rect x="486" y="276" width="150" height="60" rx="8"/>
-              <rect x="136" y="26" width="150" height="110" rx="8"/><rect x="316" y="26" width="140" height="110" rx="8"/><rect x="486" y="26" width="150" height="110" rx="8"/><rect x="666" y="26" width="120" height="110" rx="8"/>
-            </g>
-            <g font-family="DM Mono, monospace" font-size="11" fill="#c98a4b" fill-opacity=".7" letter-spacing="2">
-              <text x="146" y="154">COOPER'S ROW</text><text x="146" y="264">FIG STREET</text><text x="560" y="420" fill="#8fb4be">EAST RIVER</text>
-            </g>
-          </svg>
-          <button class="pin main on" data-t="Ashgrove Roastery" data-d="You're here. 14 Cooper's Row, eighteen bar stools and a roaster you can watch." style="left:52%;top:42%"><span class="sr">Ashgrove Roastery</span></button>
-          <button class="pin" data-t="Cooper St tram" data-d="Ninety seconds on foot. Lines 4 and 9 stop right outside." style="left:24%;top:26%"><span class="sr">Cooper Street tram stop</span></button>
-          <button class="pin" data-t="Riverside Park" data-d="Take-away flat whites taste better on the third bench." style="left:78%;top:62%"><span class="sr">Riverside Park</span></button>
-          <button class="pin" data-t="Bike dock" data-d="Twelve docks, and there is always one free." style="left:34%;top:58%"><span class="sr">Bike dock</span></button>
-          <button class="pin" data-t="Linden garage" data-d="Validate your ticket with any bag of beans." style="left:82%;top:22%"><span class="sr">Linden garage</span></button>
+          <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs>
+<radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e0652a" stop-opacity=".16"/><stop offset=".7" stop-color="#e0652a" stop-opacity=".04"/><stop offset="1" stop-color="#e0652a" stop-opacity="0"/></radialGradient>
+<linearGradient id="riv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16212a"/><stop offset="1" stop-color="#0c1218"/></linearGradient>
+<pattern id="trees" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2.2" cy="2.4" r="1.3" fill="#2d4228"/><circle cx="6.6" cy="6.3" r="1.1" fill="#26391f"/></pattern>
+</defs>
+<style>
+.bl{fill:#1a130d}.bl.lit{fill:#2b1d12}
+.st{stroke:#251a12;stroke-width:4.5;fill:none}.av{stroke:#2c1f15;stroke-width:9;fill:none}
+.cl{stroke:#c98a4b;stroke-opacity:.2;stroke-width:.8;stroke-dasharray:6 7;fill:none}
+.tx{font-family:'DM Mono',ui-monospace,monospace;font-size:8.5px;letter-spacing:2.2px;fill:#c98a4b;fill-opacity:.55;text-transform:uppercase}
+.route{fill:none;stroke:#e0652a;stroke-width:2;stroke-linecap:round;stroke-dasharray:3 7;animation:dash 1.6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-20}}
+@media (prefers-reduced-motion:reduce){.route{animation:none}}
+</style>
+<rect width="800" height="600" fill="#0f0a07"/>
+<rect class="bl" x="30" y="-19" width="24" height="46" rx="1.5"/>
+<rect class="bl" x="19" y="31" width="36" height="23" rx="1.5"/>
+<rect class="bl" x="-19" y="31" width="34" height="24" rx="1.5"/>
+<rect class="bl" x="-19" y="11" width="46" height="16" rx="1.5"/>
+<rect class="bl" x="-18" y="-18" width="25" height="24" rx="1.5"/>
+<rect class="bl" x="13" y="-18" width="13" height="25" rx="1.5"/>
+<rect class="bl" x="23" y="65" width="32" height="53" rx="1.5"/>
+<rect class="bl lit" x="-19" y="83" width="38" height="35" rx="1.5"/>
+<rect class="bl" x="-19" y="122" width="24" height="40" rx="1.5"/>
+<rect class="bl" x="-18" y="66" width="36" height="12" rx="1.5"/>
+<rect class="bl" x="10" y="122" width="20" height="39" rx="1.5"/>
+<rect class="bl" x="35" y="122" width="19" height="39" rx="1.5"/>
+<rect class="bl" x="-19" y="215" width="36" height="39" rx="1.5"/>
+<rect class="bl lit" x="22" y="216" width="32" height="38" rx="1.5"/>
+<rect class="bl" x="33" y="178" width="21" height="32" rx="1.5"/>
+<rect class="bl" x="-19" y="178" width="14" height="34" rx="1.5"/>
+<rect class="bl lit" x="-2" y="178" width="31" height="34" rx="1.5"/>
+<rect class="bl" x="-19" y="265" width="74" height="28" rx="1.5"/>
+<rect class="bl" x="-18" y="297" width="46" height="44" rx="1.5"/>
+<rect class="bl" x="33" y="297" width="21" height="44" rx="1.5"/>
+<rect class="bl" x="6" y="359" width="47" height="29" rx="1.5"/>
+<rect class="bl lit" x="-18" y="394" width="28" height="40" rx="1.5"/>
+<rect class="bl" x="-19" y="358" width="20" height="31" rx="1.5"/>
+<rect class="bl" x="15" y="394" width="39" height="16" rx="1.5"/>
+<rect class="bl" x="14" y="415" width="40" height="20" rx="1.5"/>
+<rect class="bl lit" x="18" y="466" width="35" height="17" rx="1.5"/>
+<rect class="bl" x="18" y="446" width="35" height="14" rx="1.5"/>
+<rect class="bl" x="-18" y="446" width="31" height="15" rx="1.5"/>
+<rect class="bl" x="-19" y="465" width="33" height="20" rx="1.5"/>
+<rect class="bl lit" x="66" y="-19" width="38" height="73" rx="1.5"/>
+<rect class="bl" x="109" y="-18" width="28" height="72" rx="1.5"/>
+<rect class="bl lit" x="141" y="-19" width="53" height="73" rx="1.5"/>
+<rect class="bl" x="66" y="106" width="67" height="56" rx="1.5"/>
+<rect class="bl" x="67" y="67" width="65" height="34" rx="1.5"/>
+<rect class="bl" x="137" y="66" width="57" height="49" rx="1.5"/>
+<rect class="bl" x="136" y="120" width="59" height="43" rx="1.5"/>
+<rect class="bl" x="100" y="179" width="44" height="75" rx="1.5"/>
+<rect class="bl" x="65" y="178" width="30" height="77" rx="1.5"/>
+<rect class="bl" x="150" y="179" width="44" height="25" rx="1.5"/>
+<rect class="bl" x="149" y="209" width="45" height="46" rx="1.5"/>
+<rect class="bl" x="133" y="266" width="60" height="75" rx="1.5"/>
+<rect class="bl" x="66" y="266" width="63" height="28" rx="1.5"/>
+<rect class="bl" x="66" y="298" width="62" height="43" rx="1.5"/>
+<rect class="bl" x="66" y="359" width="42" height="75" rx="1.5"/>
+<rect class="bl" x="112" y="358" width="39" height="77" rx="1.5"/>
+<rect class="bl" x="156" y="359" width="38" height="74" rx="1.5"/>
+<rect class="bl" x="65" y="445" width="51" height="40" rx="1.5"/>
+<rect class="bl" x="120" y="446" width="33" height="39" rx="1.5"/>
+<rect class="bl" x="157" y="445" width="38" height="40" rx="1.5"/>
+<rect class="bl lit" x="205" y="-19" width="51" height="41" rx="1.5"/>
+<rect class="bl" x="303" y="-18" width="38" height="35" rx="1.5"/>
+<rect class="bl lit" x="207" y="27" width="48" height="27" rx="1.5"/>
+<rect class="bl" x="303" y="23" width="38" height="31" rx="1.5"/>
+<rect class="bl" x="261" y="-18" width="37" height="22" rx="1.5"/>
+<rect class="bl lit" x="261" y="10" width="36" height="43" rx="1.5"/>
+<rect class="bl" x="290" y="66" width="51" height="54" rx="1.5"/>
+<rect class="bl" x="206" y="132" width="79" height="30" rx="1.5"/>
+<rect class="bl" x="290" y="126" width="51" height="35" rx="1.5"/>
+<rect class="bl" x="206" y="66" width="44" height="62" rx="1.5"/>
+<rect class="bl" x="255" y="66" width="29" height="60" rx="1.5"/>
+<rect class="bl" x="295" y="203" width="47" height="52" rx="1.5"/>
+<rect class="bl" x="269" y="178" width="73" height="21" rx="1.5"/>
+<rect class="bl" x="206" y="179" width="58" height="21" rx="1.5"/>
+<rect class="bl" x="269" y="203" width="22" height="51" rx="1.5"/>
+<rect class="bl" x="206" y="205" width="18" height="49" rx="1.5"/>
+<rect class="bl lit" x="228" y="205" width="37" height="50" rx="1.5"/>
+<rect class="bl" x="206" y="266" width="51" height="76" rx="1.5"/>
+<rect class="bl" x="262" y="267" width="43" height="74" rx="1.5"/>
+<rect class="bl" x="310" y="265" width="33" height="77" rx="1.5"/>
+<rect class="bl" x="207" y="359" width="65" height="42" rx="1.5"/>
+<rect class="bl" x="205" y="406" width="67" height="28" rx="1.5"/>
+<rect class="bl" x="277" y="358" width="65" height="31" rx="1.5"/>
+<rect class="bl" x="278" y="394" width="63" height="39" rx="1.5"/>
+<rect class="bl" x="297" y="446" width="45" height="39" rx="1.5"/>
+<rect class="bl" x="206" y="446" width="37" height="38" rx="1.5"/>
+<rect class="bl" x="248" y="446" width="21" height="37" rx="1.5"/>
+<rect class="bl" x="275" y="447" width="17" height="37" rx="1.5"/>
+<rect class="bl" x="453" y="-18" width="41" height="72" rx="1.5"/>
+<rect class="bl" x="407" y="-19" width="40" height="73" rx="1.5"/>
+<rect class="bl" x="359" y="-18" width="43" height="46" rx="1.5"/>
+<rect class="bl" x="359" y="33" width="44" height="21" rx="1.5"/>
+<rect class="bl" x="359" y="66" width="53" height="95" rx="1.5"/>
+<rect class="bl" x="416" y="66" width="78" height="50" rx="1.5"/>
+<rect class="bl" x="416" y="120" width="78" height="41" rx="1.5"/>
+<rect class="bl" x="454" y="203" width="41" height="52" rx="1.5"/>
+<rect class="bl" x="358" y="229" width="63" height="25" rx="1.5"/>
+<rect class="bl" x="426" y="179" width="68" height="20" rx="1.5"/>
+<rect class="bl" x="427" y="204" width="23" height="49" rx="1.5"/>
+<rect class="bl" x="358" y="178" width="21" height="47" rx="1.5"/>
+<rect class="bl lit" x="382" y="178" width="40" height="47" rx="1.5"/>
+<rect class="bl" x="359" y="292" width="38" height="49" rx="1.5"/>
+<rect class="bl" x="431" y="267" width="62" height="25" rx="1.5"/>
+<rect class="bl" x="359" y="266" width="66" height="20" rx="1.5"/>
+<rect class="bl" x="402" y="291" width="25" height="51" rx="1.5"/>
+<rect class="bl" x="431" y="298" width="29" height="43" rx="1.5"/>
+<rect class="bl" x="466" y="297" width="29" height="44" rx="1.5"/>
+<rect class="bl" x="359" y="359" width="57" height="75" rx="1.5"/>
+<rect class="bl" x="423" y="359" width="71" height="36" rx="1.5"/>
+<rect class="bl" x="422" y="401" width="72" height="33" rx="1.5"/>
+<rect class="bl" x="359" y="447" width="48" height="37" rx="1.5"/>
+<rect class="bl" x="413" y="446" width="52" height="38" rx="1.5"/>
+<rect class="bl" x="469" y="446" width="26" height="39" rx="1.5"/>
+<rect class="bl" x="506" y="-19" width="53" height="73" rx="1.5"/>
+<rect class="bl" x="564" y="-18" width="67" height="21" rx="1.5"/>
+<rect class="bl" x="563" y="7" width="70" height="48" rx="1.5"/>
+<rect class="bl" x="506" y="66" width="57" height="96" rx="1.5"/>
+<rect class="bl" x="568" y="67" width="63" height="26" rx="1.5"/>
+<rect class="bl" x="568" y="99" width="63" height="62" rx="1.5"/>
+<rect class="bl" x="550" y="178" width="40" height="50" rx="1.5"/>
+<rect class="bl" x="506" y="206" width="38" height="48" rx="1.5"/>
+<rect class="bl" x="506" y="178" width="39" height="22" rx="1.5"/>
+<rect class="bl" x="550" y="233" width="39" height="21" rx="1.5"/>
+<rect class="bl" x="594" y="178" width="38" height="27" rx="1.5"/>
+<rect class="bl" x="595" y="211" width="36" height="43" rx="1.5"/>
+<rect class="bl" x="551" y="358" width="40" height="77" rx="1.5"/>
+<rect class="bl" x="595" y="358" width="36" height="76" rx="1.5"/>
+<rect class="bl" x="505" y="358" width="42" height="39" rx="1.5"/>
+<rect class="bl" x="506" y="401" width="41" height="33" rx="1.5"/>
+<rect class="bl" x="505" y="445" width="62" height="40" rx="1.5"/>
+<rect class="bl" x="570" y="446" width="33" height="39" rx="1.5"/>
+<rect class="bl" x="609" y="447" width="22" height="37" rx="1.5"/>
+<rect class="bl" x="703" y="-19" width="51" height="29" rx="1.5"/>
+<rect class="bl lit" x="648" y="-19" width="32" height="46" rx="1.5"/>
+<rect class="bl" x="648" y="32" width="51" height="23" rx="1.5"/>
+<rect class="bl lit" x="686" y="-18" width="12" height="45" rx="1.5"/>
+<rect class="bl lit" x="703" y="15" width="33" height="40" rx="1.5"/>
+<rect class="bl" x="740" y="15" width="15" height="40" rx="1.5"/>
+<rect class="bl" x="648" y="100" width="57" height="62" rx="1.5"/>
+<rect class="bl" x="648" y="65" width="57" height="31" rx="1.5"/>
+<rect class="bl" x="709" y="66" width="45" height="55" rx="1.5"/>
+<rect class="bl" x="709" y="125" width="46" height="37" rx="1.5"/>
+<rect class="bl" x="648" y="178" width="53" height="48" rx="1.5"/>
+<rect class="bl" x="648" y="230" width="52" height="24" rx="1.5"/>
+<rect class="bl" x="705" y="178" width="50" height="38" rx="1.5"/>
+<rect class="bl" x="705" y="220" width="48" height="34" rx="1.5"/>
+<rect class="bl" x="695" y="300" width="59" height="42" rx="1.5"/>
+<rect class="bl" x="696" y="267" width="57" height="28" rx="1.5"/>
+<rect class="bl" x="648" y="265" width="43" height="50" rx="1.5"/>
+<rect class="bl" x="648" y="319" width="43" height="23" rx="1.5"/>
+<rect class="bl" x="648" y="404" width="54" height="30" rx="1.5"/>
+<rect class="bl" x="705" y="358" width="49" height="27" rx="1.5"/>
+<rect class="bl" x="648" y="358" width="27" height="42" rx="1.5"/>
+<rect class="bl" x="680" y="359" width="21" height="42" rx="1.5"/>
+<rect class="bl" x="706" y="390" width="26" height="43" rx="1.5"/>
+<rect class="bl" x="739" y="390" width="15" height="44" rx="1.5"/>
+<rect class="bl" x="648" y="446" width="30" height="38" rx="1.5"/>
+<rect class="bl" x="683" y="445" width="36" height="40" rx="1.5"/>
+<rect class="bl" x="722" y="445" width="32" height="39" rx="1.5"/>
+<rect class="bl" x="786" y="-2" width="33" height="30" rx="1.5"/>
+<rect class="bl" x="766" y="-19" width="16" height="48" rx="1.5"/>
+<rect class="bl" x="786" y="-19" width="33" height="12" rx="1.5"/>
+<rect class="bl lit" x="766" y="33" width="34" height="21" rx="1.5"/>
+<rect class="bl" x="805" y="33" width="13" height="20" rx="1.5"/>
+<rect class="bl" x="792" y="113" width="26" height="48" rx="1.5"/>
+<rect class="bl" x="765" y="112" width="22" height="51" rx="1.5"/>
+<rect class="bl lit" x="766" y="66" width="22" height="43" rx="1.5"/>
+<rect class="bl" x="792" y="66" width="26" height="41" rx="1.5"/>
+<rect class="bl" x="796" y="220" width="23" height="34" rx="1.5"/>
+<rect class="bl" x="766" y="179" width="16" height="37" rx="1.5"/>
+<rect class="bl" x="788" y="198" width="29" height="18" rx="1.5"/>
+<rect class="bl" x="787" y="178" width="31" height="15" rx="1.5"/>
+<rect class="bl" x="766" y="221" width="26" height="19" rx="1.5"/>
+<rect class="bl" x="765" y="243" width="27" height="12" rx="1.5"/>
+<rect class="bl" x="765" y="265" width="54" height="24" rx="1.5"/>
+<rect class="bl" x="766" y="293" width="20" height="49" rx="1.5"/>
+<rect class="bl" x="791" y="292" width="28" height="22" rx="1.5"/>
+<rect class="bl" x="791" y="319" width="27" height="22" rx="1.5"/>
+<rect class="bl" x="796" y="359" width="23" height="37" rx="1.5"/>
+<rect class="bl lit" x="767" y="402" width="20" height="32" rx="1.5"/>
+<rect class="bl" x="766" y="359" width="24" height="24" rx="1.5"/>
+<rect class="bl" x="765" y="387" width="26" height="9" rx="1.5"/>
+<rect class="bl" x="791" y="400" width="28" height="18" rx="1.5"/>
+<rect class="bl" x="792" y="422" width="27" height="13" rx="1.5"/>
+<rect class="bl" x="790" y="446" width="29" height="14" rx="1.5"/>
+<rect class="bl" x="765" y="445" width="20" height="19" rx="1.5"/>
+<rect class="bl" x="766" y="468" width="19" height="16" rx="1.5"/>
+<rect class="bl" x="790" y="465" width="11" height="19" rx="1.5"/>
+<rect class="bl" x="805" y="465" width="14" height="20" rx="1.5"/>
+<rect x="504" y="264" width="132" height="82" rx="4" fill="#141d12"/><rect x="504" y="264" width="132" height="82" rx="4" fill="url(#trees)"/>
+<path d="M-20 492C120 468 230 512 380 494S640 456 820 486V620H-20Z" fill="url(#riv)"/>
+<path d="M-20 492C120 468 230 512 380 494S640 456 820 486" fill="none" stroke="#6f97a4" stroke-opacity=".35" stroke-width="1.2"/>
+<path d="M-20 514C140 492 250 530 390 516S650 480 820 508" fill="none" stroke="#6f97a4" stroke-opacity=".12" stroke-width="1"/>
+<path d="M-20 540C150 520 270 552 400 540S660 508 820 534" fill="none" stroke="#6f97a4" stroke-opacity=".08" stroke-width="1"/>
+<g stroke="#2c3a40" stroke-width="3" stroke-linecap="round"><path d="M200 496V512M350 498V516M500 484V502M640 470V488"/></g>
+<path class="st" d="M60 -20V500"/>
+<path class="st" d="M200 -20V500"/>
+<path class="av" d="M350 -20V500"/>
+<path class="st" d="M500 -20V500"/>
+<path class="av" d="M640 -20V500"/>
+<path class="st" d="M760 -20V500"/>
+<path class="st" d="M-20 60H820"/>
+<path class="av" d="M-20 170H820"/>
+<path class="st" d="M-20 260H820"/>
+<path class="av" d="M-20 350H820"/>
+<path class="st" d="M-20 440H820"/>
+<path class="cl" d="M640 -20V500"/>
+<path class="cl" d="M350 -20V500"/>
+<path class="cl" d="M-20 170H820"/>
+<path class="cl" d="M-20 350H820"/>
+<circle cx="275" cy="170" r="165" fill="url(#glow)"/>
+<circle cx="275" cy="170" r="165" fill="none" stroke="#e0652a" stroke-opacity=".5" stroke-width="1" stroke-dasharray="2 5"/>
+<path class="route" d="M200 260V170H268"/>
+<g class="tx">
+<text x="412" y="164">Cooper's Row</text>
+<text x="82" y="54">Fig Street</text>
+<text x="82" y="254">Fulton Place</text>
+<text x="82" y="434">Wythe Avenue</text>
+<text transform="translate(343 330) rotate(-90)">Dean Avenue</text>
+<text x="560" y="522" fill="#8fb4be" fill-opacity=".6">East River</text>
+<text x="528" y="313" fill="#6f8f67" fill-opacity=".8" text-anchor="start">Linden Park</text>
+</g>
+<g class="tx" fill-opacity=".8">
+<text x="296" y="27" fill="#e0652a" fill-opacity=".85">5 min walk</text>
+<text x="24" y="578">200 m</text>
+<text x="640" y="578" text-anchor="start">40.7128° N · 73.9442° W</text>
+</g>
+<path d="M24 566H64M24 562V570M64 562V570" stroke="#c98a4b" stroke-opacity=".6" stroke-width="1" fill="none"/>
+<g transform="translate(756 40)" fill="none" stroke="#c98a4b" stroke-opacity=".65"><circle r="15" stroke-width=".8"/><path d="M0 -11L4 3L0 0L-4 3Z" fill="#c98a4b" fill-opacity=".7" stroke="none"/></g>
+<text x="753" y="12" class="tx" fill-opacity=".8">N</text>
+</svg>
+          <button class="pin main on" type="button" data-k="You are here" data-t="Ember Roastery" data-d="14 Cooper's Row. Eighteen bar stools and a roaster you can watch." style="left:34.38%;top:28.33%"><span class="sr">Ember Roastery</span></button>
+          <span class="plabel" style="left:34.38%;top:28.33%">Ember</span>
+          <button class="pin" type="button" data-k="Transit · 2 min walk" data-t="Fulton tram stop" data-d="Lines 4 and 9 stop right on the corner." style="left:25.00%;top:43.33%"><span class="sr">Fulton tram stop</span></button>
+          <button class="pin" type="button" data-k="Bikes · 3 min walk" data-t="Dean Ave bike dock" data-d="Twelve docks, and there is always one free." style="left:43.75%;top:43.33%"><span class="sr">Dean Avenue bike dock</span></button>
+          <button class="pin" type="button" data-k="Green space · 6 min walk" data-t="Linden Park" data-d="Take-away flat whites taste better on the third bench." style="left:71.25%;top:50.83%"><span class="sr">Linden Park</span></button>
+          <button class="pin" type="button" data-k="Parking · 8 min walk" data-t="Linden garage" data-d="Validate your ticket with any bag of beans." style="left:80.00%;top:28.33%"><span class="sr">Linden garage</span></button>
         </div>
-        <div class="pv" id="pv" aria-live="polite"><b id="pvt">Ashgrove Roastery</b><span id="pvd">You're here. 14 Cooper's Row, eighteen bar stools and a roaster you can watch.</span></div>
+        <div class="pv" id="pv" aria-live="polite"><em id="pvk">You are here</em><b id="pvt">Ember Roastery</b><span id="pvd">14 Cooper's Row. Eighteen bar stools and a roaster you can watch.</span></div>
       </div>
 
       <div class="infocard" id="p-info" role="tabpanel" aria-labelledby="tab-info">
@@ -256,7 +497,7 @@
             <tr data-d="Sun"><th scope="row">Sunday</th><td>8:00 am – 4:00 pm</td></tr>
           </tbody>
         </table>
-        <p class="contact"><a href="tel:+17185550147">(718) 555-0147</a><a href="mailto:hello@ashgrove.coffee">hello@ashgrove.coffee</a></p>
+        <p class="contact"><a href="tel:+17185550147">(718) 555-0147</a><a href="mailto:hello@ember.coffee">hello@ember.coffee</a></p>
         <div class="acts">
           <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=14+Cooper%27s+Row+Brooklyn+NY" target="_blank" rel="noopener">Get directions</a>
           <a class="btn ghost" href="tel:+17185550147">Call the bar</a>
@@ -267,11 +508,11 @@
 </section>
 </main>
 
-<footer class="foot" id="foot" data-v="foot">
+<footer class="foot" id="foot">
   <div class="fwrap">
     <div class="fgrid">
       <div class="fbrand">
-        <p class="flogo">Ashgrove</p>
+        <p class="flogo">Ember</p>
         <p>Small-batch roasters on Cooper's Row. Letters from the roastery, once a month, never more.</p>
         <form class="news" id="news" novalidate>
           <label class="sr" for="em">Email address</label>
@@ -281,12 +522,11 @@
         </form>
       </div>
       <nav aria-label="Shop"><h3>Shop</h3><ul><li><a href="#menu">House roast</a></li><li><a href="#menu">Single origins</a></li><li><a href="#menu">Brewers &amp; kettles</a></li><li><a href="#menu">Gift cards</a></li><li><a href="#menu">Subscriptions</a></li></ul></nav>
-      <nav aria-label="Café"><h3>Café</h3><ul><li><a href="#menu">Menu</a></li><li><a href="#roast">Roast dial</a></li><li><a href="#visit">Hours</a></li><li><a href="#visit">Private events</a></li></ul></nav>
-      <nav aria-label="Company"><h3>Company</h3><ul><li><a href="#roast">Our story</a></li><li><a href="#roast">Sourcing</a></li><li><a href="#visit">Wholesale</a></li><li><a href="#visit">Careers</a></li></ul></nav>
+      <nav aria-label="Café"><h3>Café</h3><ul><li><a href="#menu">Menu</a></li><li><a href="#order">Order</a></li><li><a href="#visit">Hours</a></li><li><a href="#visit">Private events</a></li></ul></nav>
+      <nav aria-label="Company"><h3>Company</h3><ul><li><a href="#order">Our story</a></li><li><a href="#order">Sourcing</a></li><li><a href="#visit">Wholesale</a></li><li><a href="#visit">Careers</a></li></ul></nav>
     </div>
-    <p class="wm" id="wm" aria-hidden="true">Ashgrove</p>
     <div class="fbot">
-      <span>© 2026 Ashgrove Coffee Roasters. A fictional café.</span>
+      <span>© 2026 Ember Coffee Roasters. A fictional café.</span>
       <span class="soc"><a href="#top">Instagram</a><a href="#top">Journal</a><a href="#top">Privacy</a></span>
     </div>
   </div>

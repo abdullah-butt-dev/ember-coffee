@@ -6,15 +6,15 @@ const mobile=matchMedia('(max-width:767px)').matches;
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 
 /* ---------- loader ---------- */
-const ld=$('#ld'),pc=$('#pc'),pb=$('#pb');
+const ld=$('#ld'),pb=$('#pb');
 const hide=()=>{if(!ld.isConnected)return;document.body.classList.remove('lock');ld.classList.add('out');setTimeout(()=>ld.remove(),1100)};
 
 /* ---------- hero engine ---------- */
 const TOTAL=200,LERP=.14,HOLD=.94,STARTS=[0,.15,.25,.34,.46,.62,.77,.88];
-window.AshgroveConfig={STARTS,HOLD,TOTAL};
+window.EmberConfig={STARTS,HOLD,TOTAL};
 const DIR=mobile?'frames/m/':'frames/';
 const hero=$('#hero'),cv=$('#cv'),cx=cv.getContext('2d',{alpha:false});
-const caps=$$('.cap'),dots=$$('.rail li'),cn=$('#cn'),cL=$('#cl');
+const caps=$$('.cap'),dots=$$('.rail li');
 const frames=new Array(TOTAL).fill(null),queue=[];
 const step=mobile?2:1;
 for(let i=0;i<TOTAL;i+=step)queue.push(i);
@@ -29,7 +29,7 @@ async function load(i){
     if(i===0)draw(0)}
   catch(e){frames[i]=null}
   settled++;
-  if(settled<=GATE){const p=Math.round(settled/GATE*100);pc.textContent=p;pb.style.transform=`scaleX(${p/100})`}
+  if(settled<=GATE)pb.style.transform=`scaleX(${settled/GATE})`
   if(settled===GATE)hide();
   last=-1}
 async function worker(){while(job<queue.length)await load(queue[job++])}
@@ -98,33 +98,39 @@ const wup=e=>{
   else vel=cl(vel,-6,6)};
 wheel.addEventListener('pointerup',wup);wheel.addEventListener('pointercancel',wup);
 
-/* ---------- roast dial ---------- */
-const rd=$('#rd'),rls=$$('.rl'),needle=$('#needle'),garc=$('#garc'),temp=$('#temp'),tint=$('#tint'),shot=$('.shot'),rnotes=$('#rnotes');
-const ms=[$('#m0'),$('#m1'),$('#m2')];
-const ROAST=[
-  {n:'Dawn',l:'light',t:'Jasmine, stone fruit and a bright citrus snap.',p:'a lemon-poppy loaf',tm:'8m 40s',temp:196,m:[.92,.34,.52]},
-  {n:'Ember',l:'medium',t:'Cocoa nib, burnt honey and toasted hazelnut.',p:'a butter croissant',tm:'9m 50s',temp:208,m:[.56,.7,.86]},
-  {n:'Midnight',l:'dark',t:'Dark chocolate, molasses and a whisper of smoke.',p:'a chocolate babka',tm:'11m 05s',temp:224,m:[.2,.95,.58]}
-];
-let rt=1,rc=1,rshown=1,rdone=false;
-const lerpA=(k,c)=>{const i=Math.min(1,Math.floor(c)),f=c-i;return ROAST[i][k]+(ROAST[i+1][k]-ROAST[i][k])*f};
-function setRoast(v){rt=cl(+v,0,2);rls.forEach(b=>b.classList.toggle('on',+b.dataset.v===rt));rd.value=rt}
-function rtext(v){
-  const R=ROAST[v];rnotes.classList.add('out');
-  setTimeout(()=>{$('#rn').innerHTML=`${R.n} <i>· ${R.l}</i>`;$('#rt').textContent=R.t;$('#rp').textContent=R.p;$('#rtm').textContent=R.tm;rnotes.classList.remove('out')},180)}
-function rrender(){
-  const f=.2+rc*.4;
-  needle.style.transform=`rotate(${(-70+rc*70).toFixed(2)}deg)`;
-  garc.style.strokeDashoffset=(283*(1-f)).toFixed(1);
-  temp.textContent=Math.round(lerpA('temp',rc));
-  {const i=Math.min(1,Math.floor(rc)),fr=rc-i;
-   for(let k=0;k<3;k++)ms[k].style.transform=`scaleX(${(ROAST[i].m[k]+(ROAST[i+1].m[k]-ROAST[i].m[k])*fr).toFixed(3)})`}
-  tint.style.opacity=(rc/2*.6).toFixed(3);
-  shot.style.setProperty('--r',(rc/2).toFixed(3));
+/* ---------- order builder ---------- */
+const bform=$('#bform'),bimgs=$$('#bimgs img'),plus=$('#plus'),bn=$('#bn'),bpr=$('#bpr'),bd=$('#bd'),bsum=$('#bsum'),btot=$('#btot'),bbar=$('#bbar'),bgo=$('#bgo'),milkset=$('#milkset');
+const DR={
+  latte:{n:'No. 7 Latte',d:'Cocoa nib, burnt honey and silk milk. Our signature.',p:5.8,milk:true},
+  cortado:{n:'Copper Cortado',d:'Equal parts espresso and warm milk, served in glass.',p:4.2,milk:true},
+  cold:{n:'Slow Cold Brew',d:'Eighteen-hour steep, orange oil, over one big cube.',p:5.4,milk:true},
+  pour:{n:'V60 Pour-over',d:'Single origin, poured by hand. Ask the bar for today\u2019s farm.',p:6.5,milk:false},
+  affo:{n:'Affogato Nero',d:'Vanilla gelato drowned in hot espresso, dark chocolate on top.',p:6.9,milk:false}
+};
+const SZ={s:['Small',0],m:['Medium',.6],l:['Large',1.2]};
+const ML={whole:['whole',0],oat:['oat',.6],almond:['almond',.6]};
+const EX={shot:['extra shot',.9],vanilla:['vanilla',.6],croissant:['a butter croissant',3.5]};
+let bt=6.4,bc=6.4,placed=false,lastDrink='';
+const money=v=>'$'+v.toFixed(2);
+function brender(){
+  const f=new FormData(bform),d=f.get('drink'),D=DR[d],sz=f.get('size'),ml=f.get('milk'),pk=f.get('pickup');
+  const ex=f.getAll('extra');
+  bimgs.forEach(im=>im.classList.toggle('on',im.dataset.drink===d));
+  plus.classList.toggle('on',ex.includes('croissant'));
+  $$('input',milkset).forEach(i=>i.disabled=!D.milk);
+  milkset.style.opacity=D.milk?'':'.45';
+  if(d!==lastDrink){lastDrink=d;bn.textContent=D.n;bd.textContent=D.d;bpr.textContent='from '+money(D.p)}
+  let t=D.p+SZ[sz][1]+(D.milk?ML[ml][1]:0);ex.forEach(k=>t+=EX[k][1]);
+  bt=t;
+  const bits=[`${SZ[sz][0]} ${D.n}`];if(D.milk)bits.push(`${ML[ml][0]} milk`);ex.forEach(k=>bits.push(EX[k][0]));
+  if(placed){bsum.textContent=`Order #${placed} is confirmed. It will be waiting on the bar in ${pk} minutes at 14 Cooper\u2019s Row.`;bbar.classList.add('done');bgo.textContent='Build another'}
+  else{bsum.textContent=bits.join(', ');bbar.classList.remove('done');bgo.textContent='Place pickup order'}
 }
-rd.addEventListener('input',()=>setRoast(rd.value));
-rls.forEach(b=>b.addEventListener('click',()=>setRoast(b.dataset.v)));
-setRoast(1);rrender();
+bform.addEventListener('change',()=>{placed=false;brender()});
+bform.addEventListener('submit',e=>{e.preventDefault();
+  if(placed){placed=false;brender();return}
+  placed='E-'+(2080+Math.floor(Math.random()*420));brender()});
+brender();bc=bt;btot.textContent=money(bc);
 
 /* ---------- reviews ---------- */
 const slides=$$('.slide'),RN=slides.length,rdots=$('#rdots'),rbar=$('#rbar'),rcar=$('#rcar');
@@ -171,11 +177,11 @@ tabs.forEach(t=>{
   t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const o=tabs[tabs.indexOf(t)^1];o.focus();selTab(o);e.preventDefault()}})});
 function selTab(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1});vgrid.dataset.tab=t.dataset.t}
 
-const mapcard=$('#p-map'),map=$('#map'),pv=$('#pv'),pvt=$('#pvt'),pvd=$('#pvd'),pins=$$('.pin');
+const mapcard=$('#p-map'),map=$('#map'),pv=$('#pv'),pvk=$('#pvk'),pvt=$('#pvt'),pvd=$('#pvd'),pins=$$('.pin');
 const dflt=pins[0];
 let mx=0,my=0,px=0,py=0,mw=1,pw=250,mapRect=null,follow=false,pvshow=false;
 if(fine){follow=true;mapcard.classList.add('follow')}
-function setPin(p){pins.forEach(x=>x.classList.toggle('on',x===p));pvt.textContent=p.dataset.t;pvd.textContent=p.dataset.d;pw=pv.offsetWidth||250}
+function setPin(p){pins.forEach(x=>x.classList.toggle('on',x===p));pvk.textContent=p.dataset.k;pvt.textContent=p.dataset.t;pvd.textContent=p.dataset.d;pw=pv.offsetWidth||250}
 pins.forEach(p=>{
   p.addEventListener('pointerenter',()=>setPin(p));
   p.addEventListener('focus',()=>setPin(p));
@@ -185,7 +191,6 @@ const mpos=e=>{if(e.pointerType==='touch')return;mapRect=mapcard.getBoundingClie
 map.addEventListener('pointerenter',mpos);map.addEventListener('pointermove',mpos);
 
 /* ---------- footer ---------- */
-const foot=$('#foot'),wm=$('#wm');let wmp=-1;
 $('#news').addEventListener('submit',e=>{e.preventDefault();const em=$('#em'),m=$('#nmsg');
   if(!em.value||!em.checkValidity()){m.textContent='Please enter a valid email address.';em.focus();return}
   m.textContent='Thank you. The first letter is on its way.';em.value=''});
@@ -199,7 +204,7 @@ $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
   const id=a.getAttribute('href').slice(1),t=id==='top'?document.body:document.getElementById(id);if(!t)return;
   e.preventDefault();if(sheet.classList.contains('open'))sheetSet(false);
   if(id==='top')scrollTo({top:0,behavior:red?'auto':'smooth'});
-  else{const y=t.getBoundingClientRect().top+scrollY-(id==='visit'||id==='menu'||id==='roast'||id==='reviews'?0:0);scrollTo({top:Math.max(0,y),behavior:red?'auto':'smooth'})}}));
+  else{const y=t.getBoundingClientRect().top+scrollY;scrollTo({top:Math.max(0,y),behavior:red?'auto':'smooth'})}}));
 $$('[data-mag]').forEach(el=>{
   el.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse'||red)return;const r=el.getBoundingClientRect();el.style.transform=`translate(${((e.clientX-r.left-r.width/2)*.28).toFixed(1)}px,${((e.clientY-r.top-r.height/2)*.4).toFixed(1)}px)`});
   el.addEventListener('pointerleave',()=>{el.style.transform=''})});
@@ -220,8 +225,7 @@ function loop(t){
     for(let n=STARTS.length-1;n>=0;n--)if(prog>=STARTS[n]){ci=n;break}
     if(ci!==act){act=ci;
       caps.forEach((c,n)=>{c.classList.toggle('on',n===ci);c.setAttribute('aria-hidden',n!==ci);c.inert=n!==ci});
-      dots.forEach((d,n)=>d.classList.toggle('on',n===ci));
-      cn.textContent=String(ci+1).padStart(2,'0');cL.textContent=caps[ci].dataset.l}
+      dots.forEach((d,n)=>d.classList.toggle('on',n===ci))}
     const i=Math.round(cur);if(i!==last&&ready)draw(i)}
 
   /* nav + progress bar */
@@ -247,12 +251,8 @@ function loop(t){
     if(pos>1e6||pos<-1e6)pos=((pos%N)+N)%N;
     wrender()}
 
-  /* roast dial */
-  if(vis.roast||Math.abs(rt-rc)>.002){
-    if(red)rc=rt;else rc+=(rt-rc)*(1-Math.exp(-dt*7));
-    if(Math.abs(rt-rc)<.001)rc=rt;
-    rrender();
-    if(rt!==rshown){rshown=rt;rtext(rt)}}
+  /* order total count-up */
+  if(Math.abs(bt-bc)>.004){bc=red?bt:bc+(bt-bc)*(1-Math.exp(-dt*9));if(Math.abs(bt-bc)<.005)bc=bt;btot.textContent=money(bc)}
 
   /* reviews */
   if(vis.reviews&&!red){
@@ -265,10 +265,6 @@ function loop(t){
     const x=Math.min(px+18,Math.max(8,mw-pw-8)),yy=Math.max(8,py+18);
     pv.style.transform=`translate3d(${x.toFixed(1)}px,${yy.toFixed(1)}px,0)`}
 
-  /* footer wordmark */
-  if(vis.foot){
-    const r=foot.getBoundingClientRect(),p=cl((innerHeight-r.top)/(r.height*.95));
-    const v=Math.round(p*100);if(v!==wmp){wmp=v;wm.style.setProperty('--p',v+'%')}}
 }
 wmeasure();wrender();
 addEventListener('resize',()=>{wmeasure()});
