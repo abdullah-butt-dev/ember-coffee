@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ashgrove Coffee Roasters — Slow-roasted, hand-poured</title>
+<meta name="description" content="Ashgrove is a small-batch coffee roastery and café on Cooper's Row. Slow-roasted beans, hand-poured Ember No. 7 lattes, and a bar you can watch the roaster from.">
+<meta name="theme-color" content="#120c08">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="frames/frame-001.webp" media="(min-width:768px)">
+<link rel="preload" as="image" href="frames/m/frame-001.webp" media="(max-width:767px)">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="lock">
+<a class="skip" href="#menu">Skip to content</a>
+
+<div class="ld" id="ld" aria-hidden="true">
+  <div class="ld-in">
+    <svg class="ld-bean" viewBox="0 0 40 40" width="44" height="44"><ellipse cx="20" cy="20" rx="11" ry="16" transform="rotate(35 20 20)" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 29C18 23 22 17 28 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <span class="ld-name">Ashgrove</span>
+    <small>Roasting frames <span id="pc">0</span> %</small>
+    <i class="ld-bar"><b id="pb"></b></i>
+  </div>
+</div>
+
+<div class="sb" aria-hidden="true"><i id="sbf"></i></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Ashgrove Coffee Roasters, back to top">
+    <svg viewBox="0 0 40 40" width="22" height="22" aria-hidden="true"><ellipse cx="20" cy="20" rx="11" ry="16" transform="rotate(35 20 20)" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M12 29C18 23 22 17 28 11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    Ashgrove
+  </a>
+  <nav class="links" aria-label="Primary">
+    <a href="#menu">Menu</a><a href="#roast">Roast dial</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a>
+  </nav>
+  <div class="nav-r">
+    <a class="pill" href="#menu" data-mag>Order ahead</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="#menu">Menu</a><a href="#roast">Roast dial</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a>
+  </nav>
+  <p>14 Cooper's Row · Open from 6:30 am</p>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" id="hero" aria-label="Ashgrove: from bean to cup">
+  <div class="stage">
+    <picture>
+      <source media="(max-width:767px)" srcset="frames/m/frame-001.webp">
+      <img class="poster" src="frames/frame-001.webp" alt="Roasted coffee beans pouring from a burlap sack into a clay bowl on a wooden counter" width="1600" height="900" fetchpriority="high">
+    </picture>
+    <canvas id="cv" aria-hidden="true"></canvas>
+
+    <div class="cap f on" data-l="Ashgrove"><h1>Ashgrove</h1><p>Slow-roasted coffee, poured by hand.</p></div>
+    <div class="cap" data-l="Grind" aria-hidden="true" inert><h2>Grind<em>.</em></h2><p>Ground to order, seconds from the cup.</p></div>
+    <div class="cap" data-l="Tamp" aria-hidden="true" inert><h2>Tamp<em>.</em></h2><p>Thirty pounds of patience.</p></div>
+    <div class="cap" data-l="Lock" aria-hidden="true" inert><h2>Lock<em>.</em></h2><p>A quarter turn and a held breath.</p></div>
+    <div class="cap" data-l="Extract" aria-hidden="true" inert><h2>Extract<em>.</em></h2><p>Twenty-eight seconds to honey-dark crema.</p></div>
+    <div class="cap" data-l="Steam" aria-hidden="true" inert><h2>Steam<em>.</em></h2><p>Milk stretched to silk at 62°C.</p></div>
+    <div class="cap" data-l="Pour" aria-hidden="true" inert><h2>Pour<em>.</em></h2><p>A rosetta, drawn in a single breath.</p></div>
+    <div class="cap" data-l="Sip" aria-hidden="true" inert><h2>Sip<em>.</em></h2><p>Ember No. 7, waiting on Cooper's Row.</p><a class="btn" href="#visit">Find your seat</a></div>
+
+    <div class="ct" aria-hidden="true"><b id="cn">01</b> / 08<span id="cl">Ashgrove</span></div>
+    <ul class="rail" aria-hidden="true"><li class="on"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+  </div>
+</section>
+
+<!-- MENU WHEEL -->
+<section class="sec menu" id="menu" aria-labelledby="menu-h">
+  <div class="head rv">
+    <p class="eyebrow">01 — The menu wheel</p>
+    <h2 id="menu-h">Seven things worth <em>turning</em> for.</h2>
+    <p class="lede">Drag, swipe or just watch. The wheel never stops, and neither does the kitchen.</p>
+  </div>
+
+  <div class="wheel rv" id="wheel" data-v="wheel" role="region" aria-roledescription="carousel" aria-label="Signature menu" tabindex="0">
+    <ul class="deck" id="deck">
+      <li class="card"><img src="images/card-ember.webp" alt="A latte being finished with a rosetta pour into a dark ceramic cup" width="1000" height="1250" loading="lazy" draggable="false"><span class="tag">Signature</span></li>
+      <li class="card"><img src="images/card-extraction.webp" alt="Two thin streams of espresso falling from a portafilter into a glass" width="1000" height="1250" loading="lazy" draggable="false"><span class="tag">Bar</span></li>
+      <li class="card"><img src="images/card-cortado.webp" alt="A glass of cortado with latte art on a copper-rimmed saucer" width="825" height="1024" loading="lazy" draggable="false"><span class="tag">Bar</span></li>
+      <li class="card"><img src="images/card-coldbrew.webp" alt="A tall glass of cold brew over ice with cream swirling through it and an orange twist" width="825" height="1024" loading="lazy" draggable="false"><span class="tag">Cold</span></li>
+      <li class="card"><img src="images/card-pourover.webp" alt="A pour-over dripper on a glass carafe with a copper kettle pouring hot water" width="825" height="1024" loading="lazy" draggable="false"><span class="tag">Slow</span></li>
+      <li class="card"><img src="images/card-affogato.webp" alt="Vanilla gelato in a black bowl with hot espresso poured over it and chocolate shavings" width="825" height="1024" loading="lazy" draggable="false"><span class="tag">Sweet</span></li>
+      <li class="card"><img src="images/card-beans.webp" alt="A matte black coffee bag with freshly roasted beans spilled in front of it" width="825" height="1024" loading="lazy" draggable="false"><span class="tag">Take home</span></li>
+    </ul>
+  </div>
+
+  <div class="wmeta rv">
+    <button class="rnd" id="wprev" aria-label="Previous item"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="winfo" id="winfo" aria-live="polite">
+      <h3 id="wt">Ember No. 7</h3>
+      <p id="wd">Cocoa nib, burnt honey and silk milk.</p>
+      <b id="wp">$5.80</b>
+    </div>
+    <button class="rnd" id="wnext" aria-label="Next item"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</section>
+
+<!-- ROAST DIAL -->
+<section class="sec roast" id="roast" data-v="roast" aria-labelledby="roast-h">
+  <div class="head rv">
+    <p class="eyebrow">02 — The roast dial</p>
+    <h2 id="roast-h">Turn the dial. <em>Taste</em> the fire.</h2>
+    <p class="lede">Same farm, three roasts. Slide through them and watch the cup change.</p>
+  </div>
+
+  <div class="studio rv">
+    <figure class="shot">
+      <picture>
+        <source media="(min-width:768px) and (max-width:1023px)" srcset="images/promo-banner.webp">
+        <img src="images/promo-banner-mobile.webp" alt="A flaky croissant on a stoneware plate beside a steaming rosetta latte on a rustic wooden counter" width="825" height="1024" loading="lazy">
+      </picture>
+      <div class="tint" id="tint"></div>
+    </figure>
+
+    <div class="panel">
+      <div class="gauge" aria-hidden="true">
+        <svg viewBox="0 0 220 130" width="100%">
+          <path d="M20 115A90 90 0 0 1 200 115" fill="none" stroke="rgba(234,215,184,.16)" stroke-width="10" stroke-linecap="round"/>
+          <path d="M20 115A90 90 0 0 1 200 115" fill="none" stroke="url(#gg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="283" id="garc" stroke-dashoffset="283"/>
+          <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#e9c48a"/><stop offset=".55" stop-color="#e0652a"/><stop offset="1" stop-color="#6b2c14"/></linearGradient></defs>
+          <g id="needle" style="transform-origin:110px 115px"><line x1="110" y1="115" x2="110" y2="40" stroke="#ead7b8" stroke-width="3" stroke-linecap="round"/></g>
+          <circle cx="110" cy="115" r="7" fill="#ead7b8"/>
+        </svg>
+        <div class="temp"><b id="temp">208</b><span>°C drop temp</span></div>
+      </div>
+
+      <div class="dialctl">
+        <div class="rlabels">
+          <button type="button" class="rl" data-v="0">Light</button>
+          <button type="button" class="rl on" data-v="1">Medium</button>
+          <button type="button" class="rl" data-v="2">Dark</button>
+        </div>
+        <input type="range" id="rd" min="0" max="2" step="1" value="1" aria-label="Roast level: light, medium or dark">
+      </div>
+
+      <div class="rnotes" id="rnotes" aria-live="polite">
+        <h3 id="rn">Ember <i>· medium</i></h3>
+        <p id="rt">Cocoa nib, burnt honey, toasted hazelnut.</p>
+        <p class="pair">Pairs with <b id="rp">a butter croissant</b> · roast time <b id="rtm">9m 50s</b></p>
+      </div>
+
+      <dl class="meters">
+        <div><dt>Brightness</dt><dd><i id="m0"></i></dd></div>
+        <div><dt>Body</dt><dd><i id="m1"></i></dd></div>
+        <div><dt>Sweetness</dt><dd><i id="m2"></i></dd></div>
+      </dl>
+
+      <p class="ritual"><b>Morning Ritual</b> Any latte and pastry, 40% off until 10 am, Monday to Friday.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec reviews" id="reviews" data-v="reviews" aria-labelledby="rev-h">
+  <div class="head center rv">
+    <p class="eyebrow">03 — Kind words</p>
+    <h2 id="rev-h">Poured, <em>praised</em>, repeated.</h2>
+    <p class="score"><b>4.9</b><span class="stars" aria-hidden="true">★★★★★</span><span>from 1,284 cup-side reviews</span></p>
+  </div>
+
+  <div class="rcar rv" id="rcar" role="region" aria-roledescription="carousel" aria-label="Customer reviews">
+    <div class="slides" id="slides">
+      <figure class="slide on">
+        <blockquote><p>I came for the croissant and stayed for the Ember No. 7. It tastes like toasted honey and the foam is genuinely silky, the kind you stop talking to enjoy.</p></blockquote>
+        <figcaption><span class="av" aria-hidden="true">MK</span><b>Maya K.</b><span>Pastry chef, Park Slope</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <blockquote><p>The pour-over flight is the best twelve minutes of my week. They explain each origin without once making you feel small about not knowing.</p></blockquote>
+        <figcaption><span class="av" aria-hidden="true">DR</span><b>Daniel R.</b><span>Architect, Dumbo</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <blockquote><p>Watching the roaster turn beans while I drink what they became is oddly moving. I bring every visitor here. Nobody has been disappointed yet.</p></blockquote>
+        <figcaption><span class="av" aria-hidden="true">SO</span><b>Sade O.</b><span>Illustrator, Fort Greene</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <blockquote><p>The cold brew steeps eighteen hours and tastes like it. Dark cocoa, orange oil, zero bitterness. I now own three bags of the house roast.</p></blockquote>
+        <figcaption><span class="av" aria-hidden="true">LT</span><b>Leo T.</b><span>Cyclist, Williamsburg</span></figcaption>
+      </figure>
+      <figure class="slide">
+        <blockquote><p>An affogato at 4 pm on a rainy Tuesday saved my whole week. The bar stools are comfy, the playlist is kind, and the baristas remember your order.</p></blockquote>
+        <figcaption><span class="av" aria-hidden="true">IA</span><b>Ines A.</b><span>Teacher, Cobble Hill</span></figcaption>
+      </figure>
+    </div>
+    <div class="rctl">
+      <button class="rnd" id="rprev" aria-label="Previous review"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="dots" id="rdots"></div>
+      <button class="rnd" id="rnext" aria-label="Next review"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="rbar" aria-hidden="true"><i id="rbar"></i></div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="sec visit" id="visit" data-v="visit" aria-labelledby="visit-h">
+  <img class="vbg" src="images/visit-interior.webp" alt="The Ashgrove café interior at golden hour with a long wooden bar, espresso machine and pendant lamps" width="825" height="1024" loading="lazy">
+  <div class="vwrap">
+    <div class="head rv">
+      <p class="eyebrow">04 — Visit us</p>
+      <h2 id="visit-h">Pull up a <em>stool</em>.</h2>
+    </div>
+
+    <div class="vtabs" role="tablist" aria-label="Visit details">
+      <button role="tab" id="tab-map" aria-selected="true" aria-controls="p-map" data-t="map">Map</button>
+      <button role="tab" id="tab-info" aria-selected="false" aria-controls="p-info" data-t="info" tabindex="-1">Hours &amp; contact</button>
+    </div>
+
+    <div class="vgrid rv" id="vgrid" data-tab="map">
+      <div class="mapcard" id="p-map" role="tabpanel" aria-labelledby="tab-map">
+        <div class="map" id="map">
+          <svg viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="800" height="560" fill="#1a110b"/>
+            <path d="M-20 430C120 380 200 470 340 440S560 330 640 380 780 470 830 430V580H-20Z" fill="#17222a" opacity=".9"/>
+            <path d="M-20 430C120 380 200 470 340 440S560 330 640 380 780 470 830 430" fill="none" stroke="#4d7a86" stroke-opacity=".5" stroke-width="2"/>
+            <path d="M520 360l90-40 110 20 40 70-60 50-140-10z" fill="#24331f" opacity=".95"/>
+            <g stroke="#c98a4b" stroke-opacity=".28" stroke-width="2" fill="none">
+              <path d="M0 150H800M0 260H800M0 370H620M120 0V440M300 0V430M470 0V360M650 0V330"/>
+              <path d="M0 80L800 220" stroke-opacity=".16"/>
+              <path d="M200 0L360 560" stroke-opacity=".16"/>
+            </g>
+            <g fill="#2a1b12">
+              <rect x="136" y="166" width="150" height="80" rx="8"/><rect x="316" y="166" width="140" height="80" rx="8"/><rect x="486" y="166" width="150" height="80" rx="8"/>
+              <rect x="136" y="276" width="150" height="80" rx="8"/><rect x="316" y="276" width="140" height="80" rx="8"/><rect x="486" y="276" width="150" height="60" rx="8"/>
+              <rect x="136" y="26" width="150" height="110" rx="8"/><rect x="316" y="26" width="140" height="110" rx="8"/><rect x="486" y="26" width="150" height="110" rx="8"/><rect x="666" y="26" width="120" height="110" rx="8"/>
+            </g>
+            <g font-family="DM Mono, monospace" font-size="11" fill="#c98a4b" fill-opacity=".7" letter-spacing="2">
+              <text x="146" y="154">COOPER'S ROW</text><text x="146" y="264">FIG STREET</text><text x="560" y="420" fill="#8fb4be">EAST RIVER</text>
+            </g>
+          </svg>
+          <button class="pin main on" data-t="Ashgrove Roastery" data-d="You're here. 14 Cooper's Row, eighteen bar stools and a roaster you can watch." style="left:52%;top:42%"><span class="sr">Ashgrove Roastery</span></button>
+          <button class="pin" data-t="Cooper St tram" data-d="Ninety seconds on foot. Lines 4 and 9 stop right outside." style="left:24%;top:26%"><span class="sr">Cooper Street tram stop</span></button>
+          <button class="pin" data-t="Riverside Park" data-d="Take-away flat whites taste better on the third bench." style="left:78%;top:62%"><span class="sr">Riverside Park</span></button>
+          <button class="pin" data-t="Bike dock" data-d="Twelve docks, and there is always one free." style="left:34%;top:58%"><span class="sr">Bike dock</span></button>
+          <button class="pin" data-t="Linden garage" data-d="Validate your ticket with any bag of beans." style="left:82%;top:22%"><span class="sr">Linden garage</span></button>
+        </div>
+        <div class="pv" id="pv" aria-live="polite"><b id="pvt">Ashgrove Roastery</b><span id="pvd">You're here. 14 Cooper's Row, eighteen bar stools and a roaster you can watch.</span></div>
+      </div>
+
+      <div class="infocard" id="p-info" role="tabpanel" aria-labelledby="tab-info">
+        <p class="status" id="status"><i></i><span id="stxt">Checking hours…</span></p>
+        <address>14 Cooper's Row<br>Brooklyn, NY 11201</address>
+        <table class="hours">
+          <caption class="sr">Opening hours</caption>
+          <tbody>
+            <tr data-d="Mon Tue Wed Thu Fri"><th scope="row">Mon – Fri</th><td>6:30 am – 6:00 pm</td></tr>
+            <tr data-d="Sat"><th scope="row">Saturday</th><td>7:00 am – 7:00 pm</td></tr>
+            <tr data-d="Sun"><th scope="row">Sunday</th><td>8:00 am – 4:00 pm</td></tr>
+          </tbody>
+        </table>
+        <p class="contact"><a href="tel:+17185550147">(718) 555-0147</a><a href="mailto:hello@ashgrove.coffee">hello@ashgrove.coffee</a></p>
+        <div class="acts">
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=14+Cooper%27s+Row+Brooklyn+NY" target="_blank" rel="noopener">Get directions</a>
+          <a class="btn ghost" href="tel:+17185550147">Call the bar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot" id="foot" data-v="foot">
+  <div class="fwrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <p class="flogo">Ashgrove</p>
+        <p>Small-batch roasters on Cooper's Row. Letters from the roastery, once a month, never more.</p>
+        <form class="news" id="news" novalidate>
+          <label class="sr" for="em">Email address</label>
+          <input id="em" type="email" placeholder="you@email.com" autocomplete="email" required>
+          <button class="btn" type="submit">Subscribe</button>
+          <span class="nmsg" id="nmsg" aria-live="polite"></span>
+        </form>
+      </div>
+      <nav aria-label="Shop"><h3>Shop</h3><ul><li><a href="#menu">House roast</a></li><li><a href="#menu">Single origins</a></li><li><a href="#menu">Brewers &amp; kettles</a></li><li><a href="#menu">Gift cards</a></li><li><a href="#menu">Subscriptions</a></li></ul></nav>
+      <nav aria-label="Café"><h3>Café</h3><ul><li><a href="#menu">Menu</a></li><li><a href="#roast">Roast dial</a></li><li><a href="#visit">Hours</a></li><li><a href="#visit">Private events</a></li></ul></nav>
+      <nav aria-label="Company"><h3>Company</h3><ul><li><a href="#roast">Our story</a></li><li><a href="#roast">Sourcing</a></li><li><a href="#visit">Wholesale</a></li><li><a href="#visit">Careers</a></li></ul></nav>
+    </div>
+    <p class="wm" id="wm" aria-hidden="true">Ashgrove</p>
+    <div class="fbot">
+      <span>© 2026 Ashgrove Coffee Roasters. A fictional café.</span>
+      <span class="soc"><a href="#top">Instagram</a><a href="#top">Journal</a><a href="#top">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="glide.js"></script>
+</body>
+</html>
