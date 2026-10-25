@@ -5,9 +5,26 @@ const red=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mobile=matchMedia('(max-width:767px)').matches;
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 
+/* ---------- smooth scroll (Lenis) ---------- */
+const lenis = (typeof Lenis !== 'undefined' && !red) ? new Lenis({
+  duration: 1.15,
+  easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  orientation: 'vertical',
+  smoothWheel: true,
+  touchMultiplier: 1.25,
+}) : null;
+if (lenis) lenis.stop();
+
 /* ---------- loader ---------- */
 const ld=$('#ld'),pb=$('#pb');
-const hide=()=>{if(!ld.isConnected)return;document.body.classList.remove('lock');ld.classList.add('out');setTimeout(()=>ld.remove(),1100)};
+const hide=()=>{
+  if(!ld.isConnected)return;
+  document.body.classList.remove('lock');
+  ld.classList.add('out');
+  resize();
+  if(lenis) lenis.start();
+  setTimeout(()=>{ld.remove();resize()},1100);
+};
 
 /* ---------- hero engine ---------- */
 const TOTAL=200,LERP=.14,HOLD=.94,STARTS=[0,.15,.25,.34,.46,.62,.77,.88];
@@ -15,25 +32,99 @@ window.EmberConfig={STARTS,HOLD,TOTAL};
 const DIR=mobile?'frames/m/':'frames/';
 const hero=$('#hero'),cv=$('#cv'),cx=cv.getContext('2d',{alpha:false});
 const caps=$$('.cap'),dots=$$('.rail li');
-const frames=new Array(TOTAL).fill(null),queue=[];
-const step=mobile?2:1;
-for(let i=0;i<TOTAL;i+=step)queue.push(i);
+const frames=new Array(TOTAL).fill(null),loading=new Set(),queue=[];
+
+// Tier 1: Coarse keyframe anchors (every 8 frames) spanning the whole sequence
+const COARSE_STEP=mobile?8:6;
+for(let i=0;i<TOTAL;i+=COARSE_STEP)queue.push(i);
 if(queue[queue.length-1]!==TOTAL-1)queue.push(TOTAL-1);
-const GATE=Math.min(mobile?30:48,queue.length);
-let cw=0,ch=0,cur=0,last=-1,job=0,settled=0,ready=false,act=-1,init=false;
-const near=i=>{if(frames[i])return frames[i];for(let d=1;d<TOTAL;d++){if(frames[i-d])return frames[i-d];if(frames[i+d])return frames[i+d]}return null};
-function draw(i){const im=near(i);if(!im||!cw)return;const s=Math.max(cw/im.naturalWidth,ch/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;cx.drawImage(im,(cw-w)/2,(ch-h)/2,w,h);last=i}
+
+// Tier 2: Fine in-between frames (every 2 on mobile, every 1 on desktop)
+const step=mobile?2:1;
+for(let i=0;i<TOTAL;i+=step)if(!queue.includes(i))queue.push(i);
+
+// Gate: Loader drops as soon as coarse anchors + initial frames are ready
+const GATE=Math.min(mobile?16:24,queue.length);
+let cw=0,ch=0,cur=0,last=-1,settled=0,ready=false,act=-1,init=false;
+
+const near=i=>{
+  if(frames[i])return frames[i];
+  for(let d=1;d<TOTAL;d++){
+    if(frames[i-d])return frames[i-d];
+    if(frames[i+d])return frames[i+d];
+  }
+  return null;
+};
+
+function draw(i){
+  const im=near(i);
+  if(!im||!cw)return;
+  const nw=im.naturalWidth||im.width,nh=im.naturalHeight||im.height;
+  if(!nw||!nh)return;
+  const s=Math.max(cw/nw,ch/nh),w=nw*s,h=nh*s;
+  cx.drawImage(im,(cw-w)/2,(ch-h)/2,w,h);
+  last=i;
+}
+
+function getNextJob(){
+  if(!queue.length)return null;
+  let bestIdx=0;
+  if(cur>0){
+    let minDist=Infinity;
+    for(let k=0;k<queue.length;k++){
+      const d=Math.abs(queue[k]-cur);
+      if(d<minDist){minDist=d;bestIdx=k}
+    }
+  }
+  return queue.splice(bestIdx,1)[0];
+}
+
 async function load(i){
-  try{const im=new Image();im.src=`${DIR}frame-${String(i+1).padStart(3,'0')}.webp`;await im.decode();frames[i]=im;
+  if(frames[i]||loading.has(i))return;
+  loading.add(i);
+  const src=`${DIR}frame-${String(i+1).padStart(3,'0')}.webp`;
+  try{
+    let bmp=null;
+    if(typeof createImageBitmap!=='undefined'){
+      const res=await fetch(src);
+      if(res.ok){const b=await res.blob();bmp=await createImageBitmap(b)}
+    }
+    if(!bmp){
+      const im=new Image();
+      im.src=src;
+      await im.decode();
+      bmp=im;
+    }
+    frames[i]=bmp;
     if(!ready){ready=true;cv.classList.add('r')}
-    if(i===0)draw(0)}
-  catch(e){frames[i]=null}
-  settled++;
-  if(settled<=GATE)pb.style.transform=`scaleX(${settled/GATE})`
-  if(settled===GATE)hide();
-  last=-1}
-async function worker(){while(job<queue.length)await load(queue[job++])}
-function resize(){const d=Math.min(devicePixelRatio||1,1.5),r=cv.getBoundingClientRect();cw=Math.max(1,Math.round(r.width*d));ch=Math.max(1,Math.round(r.height*d));cv.width=cw;cv.height=ch;last=-1;if(ready)draw(Math.round(cur))}
+    if(i===0||last===-1)draw(Math.round(cur));
+  }catch(e){
+    frames[i]=null;
+  }finally{
+    loading.delete(i);
+    settled++;
+    if(settled<=GATE)pb.style.transform=`scaleX(${settled/GATE})`;
+    if(settled===GATE)hide();
+    last=-1;
+  }
+}
+
+async function worker(){
+  while(true){
+    const next=getNextJob();
+    if(next===null)break;
+    await load(next);
+  }
+}
+
+function resize(){
+  const d=Math.min(devicePixelRatio||1,1.5),r=cv.getBoundingClientRect();
+  cw=Math.max(1,Math.round(r.width*d));
+  ch=Math.max(1,Math.round(r.height*d));
+  cv.width=cw;cv.height=ch;
+  last=-1;
+  if(ready)draw(Math.round(cur));
+}
 
 /* ---------- elements for other effects ---------- */
 const nav=$('#nav'),sbf=$('#sbf');
@@ -197,13 +288,21 @@ $('#news').addEventListener('submit',e=>{e.preventDefault();const em=$('#em'),m=
 
 /* ---------- nav, anchors, magnetic ---------- */
 const sheet=$('#sheet'),burger=$('#burger');
-function sheetSet(o){sheet.classList.toggle('open',o);sheet.setAttribute('aria-hidden',!o);burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Close menu':'Open menu');document.body.classList.toggle('lock',o)}
+function sheetSet(o){
+  sheet.classList.toggle('open',o);
+  sheet.setAttribute('aria-hidden',!o);
+  burger.setAttribute('aria-expanded',o);
+  burger.setAttribute('aria-label',o?'Close menu':'Open menu');
+  document.body.classList.toggle('lock',o);
+  if(lenis){if(o)lenis.stop();else lenis.start()}
+}
 burger.addEventListener('click',()=>sheetSet(!sheet.classList.contains('open')));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&sheet.classList.contains('open')){sheetSet(false);burger.focus()}});
 $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
   const id=a.getAttribute('href').slice(1),t=id==='top'?document.body:document.getElementById(id);if(!t)return;
   e.preventDefault();if(sheet.classList.contains('open'))sheetSet(false);
-  if(id==='top')scrollTo({top:0,behavior:red?'auto':'smooth'});
+  if(lenis){lenis.scrollTo(t,{duration:1.2,offset:0})}
+  else if(id==='top')scrollTo({top:0,behavior:red?'auto':'smooth'});
   else{const y=t.getBoundingClientRect().top+scrollY;scrollTo({top:Math.max(0,y),behavior:red?'auto':'smooth'})}}));
 $$('[data-mag]').forEach(el=>{
   el.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse'||red)return;const r=el.getBoundingClientRect();el.style.transform=`translate(${((e.clientX-r.left-r.width/2)*.28).toFixed(1)}px,${((e.clientY-r.top-r.height/2)*.4).toFixed(1)}px)`});
@@ -213,14 +312,17 @@ $$('[data-mag]').forEach(el=>{
 let pt=performance.now(),lastY=scrollY,navHide=false,navSolid=false,sbv=-1;
 function loop(t){
   requestAnimationFrame(loop);
+  if(lenis)lenis.raf(t);
   const dt=Math.min(.05,Math.max(.001,(t-pt)/1000));pt=t;
-  const y=scrollY,hr=hero.getBoundingClientRect();
+  const y=lenis?lenis.scroll:scrollY,hr=hero.getBoundingClientRect();
 
   /* hero */
   if(!red&&hr.bottom>-100&&hr.top<innerHeight+100){
     const tot=hr.height-innerHeight,p0=tot>0?cl(-hr.top/tot):0,tgt=Math.min(1,p0/HOLD)*(TOTAL-1);
     if(!init){cur=tgt;init=true}
-    cur=Math.abs(tgt-cur)<.01?tgt:cur+(tgt-cur)*LERP;
+    const dist=Math.abs(tgt-cur);
+    const adaptiveLerp=Math.min(.32,Math.max(.12,LERP+(dist/TOTAL)*.45));
+    cur=dist<.005?tgt:cur+(tgt-cur)*adaptiveLerp;
     const prog=Math.min(1,(cur/(TOTAL-1))*HOLD);let ci=0;
     for(let n=STARTS.length-1;n>=0;n--)if(prog>=STARTS[n]){ci=n;break}
     if(ci!==act){act=ci;
@@ -266,10 +368,16 @@ function loop(t){
     pv.style.transform=`translate3d(${x.toFixed(1)}px,${yy.toFixed(1)}px,0)`}
 
 }
+let rAFResize=0;
+function scheduleResize(){
+  if(rAFResize)return;
+  rAFResize=requestAnimationFrame(()=>{rAFResize=0;resize()});
+}
 wmeasure();wrender();
-addEventListener('resize',()=>{wmeasure();resize()});
+addEventListener('resize',()=>{wmeasure();scheduleResize()});
+addEventListener('orientationchange',()=>{wmeasure();scheduleResize()});
 loop(performance.now());
 
 if(red)hide();
-else{let rtm=0;new ResizeObserver(()=>{clearTimeout(rtm);rtm=setTimeout(resize,120)}).observe(cv);resize();for(let n=0;n<6;n++)worker();setTimeout(hide,9000)}
+else{new ResizeObserver(scheduleResize).observe(cv);resize();for(let n=0;n<6;n++)worker();setTimeout(hide,4000)}
 })();
